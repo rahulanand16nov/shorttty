@@ -9,7 +9,7 @@ Make sure you have [Node.js](http://nodejs.org/) and the [Heroku CLI](https://cl
 
 ```sh
 $ git clone git@github.com:rahulanand16nov/shorttty.git # or clone your own fork
-$ cd LetsWatch 
+$ cd shorttty 
 $ npm install
 $ node index
 ```
