@@ -21,7 +21,8 @@ MongoClient.connect(uri,{useNewUrlParser: true, useUnifiedTopology: true},(error
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 
-function newID(shortid){
+// NEED TO BE FIXED
+/* function newID(shortid){
   
   urlsCollection.find({shortID:shortid}).toArray(function(error,document){
     if(error) throw error;
@@ -32,7 +33,7 @@ function newID(shortid){
     } else {
       return shortid;
     }
-})};
+})}; */
 
 // API Endpoint for creating URL
 app.post('/createURL',(req,res)=>{
@@ -52,7 +53,7 @@ app.post('/createURL',(req,res)=>{
     {
       // Given URL is not in the database so inserting it now
       let shortid = nanoid(6);
-      shortid = newID(shortid);
+      //shortid = newID(shortid);
 
       urlsCollection.insertOne({originalURL:ogURL.href,shortID:shortid},(error,result)=>
       {
@@ -60,7 +61,10 @@ app.post('/createURL',(req,res)=>{
         {
           return res.status(500).send(error);
         }
-        res.send(result.result);
+        urlsCollection.find({originalURL:ogURL.href}).toArray(function(error,document){
+          if(error) throw error;
+          res.send(document);
+        });
       });
     }
   });
