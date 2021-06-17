@@ -7,7 +7,7 @@ const MongoClient = require('mongodb').MongoClient;
 const bodyParser = require('body-parser');
 const nanoid = require('nanoid');
 
-const uri = "mongodb+srv://rahulanand16nov:Ra56123%4038@shortttycluster-nmp49.mongodb.net/test?retryWrites=true&w=majority";
+const uri = "mongodb+srv://rahulanand16nov:Password@shortttycluster-nmp49.mongodb.net/test?retryWrites=true&w=majority";
 
 MongoClient.connect(uri,{useNewUrlParser: true, useUnifiedTopology: true},(error, client) => {
   if(error) {
